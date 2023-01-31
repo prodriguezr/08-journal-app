@@ -1,61 +1,47 @@
+import { Box, Divider, Drawer, Grid, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material'
 import { TurnedInNot } from '@mui/icons-material';
-import {
-  Box,
-  Drawer,
-  Toolbar,
-  Typography,
-  Divider,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  Grid,
-  ListItemText,
-} from '@mui/material';
-import PropTypes from 'prop-types';
 
-export const Sidebar = ({ drawerWidth }) => {
+export const SideBar = ({ drawerWidth = 240 }) => {
   return (
     <Box
-      component='nav'
-      sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        component='nav'
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
     >
-      <Drawer
-        variant='permanent'
-        open
-        sx={{
-          display: { xs: 'block' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-        }}
-      >
-        <Toolbar>
-          <Typography variant='h6' component='div' noWrap>
-            Pablo Rodríguez
-          </Typography>
-        </Toolbar>
-        <Divider />
-        <List>
-          {['January', 'February', 'March'].map((month) => (
-            <ListItem key={month} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <TurnedInNot />
-                  <Grid container>
-                    <ListItemText primary={month} />
-                    <ListItemText
-                      secondary={'Reprehenderit mollit eu exercitation'}
-                    />
-                  </Grid>
-                </ListItemIcon>
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-    </Box>
-  );
-};
+        <Drawer
+            variant='permanent' // temporary
+            open
+            sx={{ 
+                display: { xs: 'block' },
+                '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
+            }}
+        >
+            <Toolbar>
+                <Typography variant='h6' noWrap component='div'>
+                    Fernando Herrera
+                </Typography>
+            </Toolbar>
+            <Divider />
 
-Sidebar.propTypes = {
-  drawerWidth: PropTypes.number.isRequired,
-};
+            <List>
+                {
+                    ['Enero','Febrero','Marzo','Abril'].map( text => (
+                        <ListItem key={ text } disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    <TurnedInNot />
+                                </ListItemIcon>
+                                <Grid container>
+                                    <ListItemText primary={ text } />
+                                    <ListItemText secondary={ 'Exercitation cillum irure elit consectetur.' } />
+                                </Grid>
+                            </ListItemButton>
+                        </ListItem>
+                    ))
+                }
+            </List>
+
+        </Drawer>
+
+    </Box>
+  )
+}
